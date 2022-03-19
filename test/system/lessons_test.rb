@@ -6,18 +6,18 @@ class LessonsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
-    visit lessons_url
+    visit course_lessons_url
     assert_selector "h1", text: "Lessons"
   end
 
   test "should create lesson" do
-    visit lessons_url
+    visit course_lessons_url
     click_on "New lesson"
 
     fill_in "Description", with: @lesson.description
     fill_in "Length", with: @lesson.length
     fill_in "Title", with: @lesson.title
-    fill_in "Type", with: @lesson.type
+    fill_in "Content Type", with: @lesson.content_type
     click_on "Create Lesson"
 
     assert_text "Lesson was successfully created"
@@ -25,13 +25,13 @@ class LessonsTest < ApplicationSystemTestCase
   end
 
   test "should update Lesson" do
-    visit lesson_url(@lesson)
+    visit course_lesson_url(@lesson)
     click_on "Edit this lesson", match: :first
 
     fill_in "Description", with: @lesson.description
     fill_in "Length", with: @lesson.length
     fill_in "Title", with: @lesson.title
-    fill_in "Type", with: @lesson.type
+    fill_in "Content Type", with: @lesson.content_type
     click_on "Update Lesson"
 
     assert_text "Lesson was successfully updated"
@@ -39,7 +39,7 @@ class LessonsTest < ApplicationSystemTestCase
   end
 
   test "should destroy Lesson" do
-    visit lesson_url(@lesson)
+    visit course_lesson_url(@lesson)
     click_on "Destroy this lesson", match: :first
 
     assert_text "Lesson was successfully destroyed"

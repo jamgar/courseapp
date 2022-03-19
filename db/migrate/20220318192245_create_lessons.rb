@@ -4,7 +4,7 @@ class CreateLessons < ActiveRecord::Migration[7.0]
       t.string :title
       t.text :description
       t.string :length
-      t.integer :type
+      t.integer :content_type
 
       t.timestamps
     end

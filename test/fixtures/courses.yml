@@ -3,13 +3,7 @@
 one:
   title: MyString
   description: MyText
-  length: MyString
-  content_type: 1
-  course: one
 
 two:
   title: MyString
   description: MyText
-  length: MyString
-  content_type: 1
-  course: two

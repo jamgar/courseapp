@@ -1,10 +1,10 @@
-<%= form_with(model: [@course, lesson], class: "contents") do |form| %>
-  <% if lesson.errors.any? %>
+<%= form_with(model: course, class: "contents") do |form| %>
+  <% if course.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
+      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
 
       <ul>
-        <% lesson.errors.each do |error| %>
+        <% course.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -19,16 +19,6 @@
   <div class="my-5">
     <%= form.label :description %>
     <%= form.text_area :description, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :length %>
-    <%= form.text_field :length, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :content_type %>
-    <%= form.number_field :content_type, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="inline">
