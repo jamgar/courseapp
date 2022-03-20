@@ -1,10 +1,10 @@
 class LessonsController < ApplicationController
   before_action :set_lesson, only: %i[ show edit update destroy ]
-  before_action :set_course, only: %i[ new create edit update ]
+  before_action :set_course #, only: %i[ new create edit update ]
 
   # GET /lessons or /lessons.json
   def index
-    @lessons = Lesson.all
+    @lessons = @course.lessons.all
   end
 
   # GET /lessons/1 or /lessons/1.json
@@ -26,7 +26,7 @@ class LessonsController < ApplicationController
 
     respond_to do |format|
       if @lesson.save
-        format.html { redirect_to course_lesson_url(@lesson), notice: "Lesson was successfully created." }
+        format.html { redirect_to course_lesson_url(@course, @lesson), notice: "Lesson was successfully created." }
         format.json { render :show, status: :created, location: @lesson }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class LessonsController < ApplicationController
   def update
     respond_to do |format|
       if @lesson.update(lesson_params)
-        format.html { redirect_to course_lesson_url(@lesson), notice: "Lesson was successfully updated." }
+        format.html { redirect_to course_lesson_url(@course, @lesson), notice: "Lesson was successfully updated." }
         format.json { render :show, status: :ok, location: @lesson }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -71,6 +71,10 @@ class LessonsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def lesson_params
+      # Form select returns a String for the select value and column is type integer.
+      # https://github.com/rails/rails/issues/25423
+      params[:lesson][:content_type] = params[:lesson][:content_type].to_i
+      
       params.require(:lesson).permit(:title, :description, :length, :content_type)
     end
 end

@@ -28,7 +28,7 @@
 
   <div class="my-5">
     <%= form.label :content_type %>
-    <%= form.number_field :content_type, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.select :content_type, options_for_select(Lesson.content_types.map{|key, value| [key.titleize,value]}, Lesson.content_types[lesson.content_type]), {}, { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2  mt-2 w-full" } %>
   </div>
 
   <div class="inline">
