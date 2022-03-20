@@ -3,13 +3,13 @@
 one:
   title: MyString
   description: MyText
-  length: MyString
-  content_type: 1
+  length: 20
+  content_type: Files
   course: one
 
 two:
   title: MyString
   description: MyText
-  length: MyString
-  content_type: 1
+  length: 15
+  content_type: Video
   course: two

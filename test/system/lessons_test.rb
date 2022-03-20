@@ -19,7 +19,7 @@ class LessonsTest < ApplicationSystemTestCase
     fill_in "Description", with: @lesson.description
     fill_in "Length", with: @lesson.length
     fill_in "Title", with: @lesson.title
-    fill_in "Content type", with: @lesson.content_type
+    select("Files", from: "Content type")
     click_on "Create Lesson"
 
     assert_text "Lesson was successfully created"
@@ -33,7 +33,7 @@ class LessonsTest < ApplicationSystemTestCase
     fill_in "Description", with: @lesson.description
     fill_in "Length", with: @lesson.length
     fill_in "Title", with: @lesson.title
-    fill_in "Content type", with: @lesson.content_type
+    select("Video", from: "Content type")
     click_on "Update Lesson"
 
     assert_text "Lesson was successfully updated"
